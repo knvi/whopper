@@ -1,3 +1,5 @@
+mod browser_auth;
+
 use anyhow::Result;
 use clap::Parser;
 
@@ -15,7 +17,7 @@ pub struct Options {
 pub async fn run(options: Options) -> Result<()> {
     // TODO: implement
 
-    todo!("Auth not implemented.");
+    browser_auth::browser_login().await;
 
     Ok(())
 }

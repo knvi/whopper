@@ -16,5 +16,7 @@ serde = { version = "1.0", features = ["derive"] }
 tokio = { version = "1", features = ["full"] }
 hyper = { version = "0.14", features = ["server"] }
 webbrowser = "0.8.5"
-reqwest = { version = "0.11", features = ["json"] }
+reqwest = { version = "0.11", features = ["json", "blocking"] }
 portpicker = "0.1.1"
+url = "2.3.1"
+dotenv = "0.15.0"

@@ -7,6 +7,7 @@ pub(crate) mod state;
 
 use anyhow::Result;
 use clap::Parser;
+use dotenv::dotenv;
 use commands::{Commands, handle_command};
 
 #[derive(Debug, Parser)]
@@ -22,6 +23,8 @@ pub struct CLI {
 }
 
 pub async fn run() -> Result<()> {
+    dotenv().ok(); // load env variables from .env
+
     let cli = CLI::parse();
 
     if let Err(err) = handle_command(cli.commands).await {
