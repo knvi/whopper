@@ -13,8 +13,8 @@ pub async fn browser_login() -> Result<String> {
 
     let mut url = Url::parse("https://whop.com/oauth").unwrap();
     url.query_pairs_mut()
-        .append_pair("redirect_uri", env::var("WHOP_REDIRECT_URI").expect("Please set the WHOP_REDIRECT_URI enviroment variable.").as_str())
-        .append_pair("client_id", env::var("WHOP_CLIENT_ID").expect("Please set the WHOP_CLIENT_ID enviroment variable.").as_str());
+        .append_pair("redirect_uri", env::var("WHOP_REDIRECT_URI").expect("Please set the WHOP_REDIRECT_URI environment variable.").as_str())
+        .append_pair("client_id", env::var("WHOP_CLIENT_ID").expect("Please set the WHOP_CLIENT_ID environment variable.").as_str());
 
     println!("Opening: {}", url.clone().as_str());
 
@@ -83,9 +83,9 @@ pub async fn browser_login() -> Result<String> {
         .form(&[
             ("grant_type", "authorization_code"),
             ("code", &code),
-            ("client_id", env::var("WHOP_CLIENT_ID").expect("Please set the WHOP_CLIENT_ID enviroment variable.").as_str()),
-            ("client_secret", env::var("WHOP_CLIENT_SECRET").expect("Please set the WHOP_CLIENT_SECRET enviroment variable.").as_str()),
-            ("redirect_uri", env::var("WHOP_REDIRECT_URI").expect("Please set the WHOP_REDIRECT_URI enviroment variable.").as_str()),
+            ("client_id", env::var("WHOP_CLIENT_ID").expect("Please set the WHOP_CLIENT_ID environment variable.").as_str()),
+            ("client_secret", env::var("WHOP_CLIENT_SECRET").expect("Please set the WHOP_CLIENT_SECRET environment variable.").as_str()),
+            ("redirect_uri", env::var("WHOP_REDIRECT_URI").expect("Please set the WHOP_REDIRECT_URI environment variable.").as_str()),
 
         ])
         .send()
