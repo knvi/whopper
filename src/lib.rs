@@ -7,6 +7,7 @@ pub(crate) mod state;
 
 use anyhow::Result;
 use clap::Parser;
+use commands::{Commands, handle_command};
 
 #[derive(Debug, Parser)]
 #[clap(
@@ -23,7 +24,9 @@ pub struct CLI {
 pub async fn run() -> Result<()> {
     let cli = CLI::parse();
 
-    todo!()
+    if let Err(err) = handle_command(cli.commands).await {
+        eprintln!("Error: {err}");
+    }
 
     Ok(())
 }
