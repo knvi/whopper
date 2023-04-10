@@ -3,6 +3,8 @@ mod browser_auth;
 use anyhow::Result;
 use clap::Parser;
 
+use self::browser_auth::browser_login;
+
 #[derive(Debug, Parser, Default, PartialEq, Eq)]
 #[clap(about = "Login to whop")]
 pub struct Options {
@@ -17,7 +19,7 @@ pub struct Options {
 pub async fn run(options: Options) -> Result<()> {
     // TODO: implement
 
-    browser_auth::browser_login().await;
+    let token = browser_login().await?;
 
-    Ok(())
+    Ok()
 }
