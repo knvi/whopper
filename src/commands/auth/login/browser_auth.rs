@@ -1,7 +1,7 @@
 use std::env;
 
 use url::Url;
-use anyhow::{Result, Context};
+use anyhow::Result;
 
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Body, Request, Response, Server};
@@ -9,14 +9,10 @@ use std::convert::Infallible;
 use tokio::sync::mpsc::{channel};   
  
 pub async fn browser_login() -> Result<String> {
-    let port = portpicker::pick_unused_port().context("Failed to pick unused port")?;
-
     let mut url = Url::parse("https://whop.com/oauth").unwrap();
     url.query_pairs_mut()
         .append_pair("redirect_uri", env::var("WHOP_REDIRECT_URI").expect("Please set the WHOP_REDIRECT_URI enviroment variable.").as_str())
         .append_pair("client_id", env::var("WHOP_CLIENT_ID").expect("Please set the WHOP_CLIENT_ID enviroment variable.").as_str());
-
-    println!("Opening: {}", url.clone().as_str());
 
     if let Err(e) = webbrowser::open(&url.as_str()) {
         println!("Failed to open browser: {}", e); 
@@ -75,11 +71,10 @@ pub async fn browser_login() -> Result<String> {
     runtime.abort();
 
     let code = response.unwrap();
-    println!("Response: {:?}", &code);
 
     let base_uri = "https://data.whop.com/oauth/token";
-    let mut client = reqwest::Client::new();
-    let mut res = client.post(base_uri)
+    let client = reqwest::Client::new();
+    let res = client.post(base_uri)
         .form(&[
             ("grant_type", "authorization_code"),
             ("code", &code),

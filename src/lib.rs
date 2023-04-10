@@ -1,9 +1,11 @@
 #![warn(clippy::pedantic)]
+#![allow(dead_code)]
 
 pub(crate) mod commands;
 pub(crate) mod util;
 pub(crate) mod config;
 pub(crate) mod state;
+pub(crate) mod vars;
 
 use anyhow::Result;
 use clap::Parser;
@@ -14,7 +16,7 @@ use commands::{Commands, handle_command};
 #[clap(
     name = "whopper",
     about = "Interact with whop using the CLI ☁️",
-    version = crate::config::CLI_VERSION,
+    version = crate::vars::CLI_VERSION,
     author = "kunevi"
 )]
 pub struct CLI {
