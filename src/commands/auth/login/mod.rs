@@ -21,5 +21,5 @@ pub async fn run(options: Options) -> Result<()> {
 
     let token = browser_login().await?;
 
-    Ok()
+    Ok(())
 }
