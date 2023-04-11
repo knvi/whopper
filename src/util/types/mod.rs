@@ -40,6 +40,14 @@ pub struct Membership {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Plan {
+    pub id: String,
+    pub internal_notes: String,
+    pub renewal_price: f32,
+    pub initial_price: f32
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Pagination {
     pub current_page: i32,
     pub total_page: i32,
