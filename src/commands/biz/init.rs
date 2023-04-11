@@ -6,7 +6,7 @@ use crate::config::Config;
 #[derive(Debug, Parser, Default)]
 #[clap(about = "Login with a business")]
 pub struct Options {
-    #[clap(long, help = "Business Api Key, you can use `--key=` param to provide the key aswell.")]
+    #[clap(long, help = "Business Api Key, you can use `--key=` param to provide the key as well.")]
     pub key: Option<String>
 }
 

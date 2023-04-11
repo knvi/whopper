@@ -35,7 +35,7 @@ pub struct Membership {
     pub user: String,
     /// Plan ID
     pub plan: String,
-    /// Timestamp of the Expiral
+    /// Timestamp of the expiration date
     pub timestamp: i32
 }
 
