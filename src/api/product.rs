@@ -1,7 +1,7 @@
 use crate::util::types::Product;
 use anyhow::Result;
 
-use super::ListResponse;
+use super::ListProductRespone;
 
 pub async fn list(biz_id: String) -> Result<Vec<Product>> {
     let client = reqwest::Client::new();
@@ -9,7 +9,7 @@ pub async fn list(biz_id: String) -> Result<Vec<Product>> {
 
     let res = client.get(url).bearer_auth(biz_id).send().await?.text().await?;
 
-    let res: ListResponse = serde_json::from_str(&res).unwrap();
+    let res: ListProductRespone = serde_json::from_str(&res).unwrap();
 
     let products: Vec<Product> = res
         .data
