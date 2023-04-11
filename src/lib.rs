@@ -6,6 +6,7 @@ pub(crate) mod util;
 pub(crate) mod config;
 pub(crate) mod state;
 pub(crate) mod vars;
+pub(crate) mod api;
 
 use anyhow::Result;
 use clap::Parser;
