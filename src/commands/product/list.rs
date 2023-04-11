@@ -19,7 +19,7 @@ pub async fn run(_command: Options) -> Result<()> {
         }
     };
 
-    let products: Vec<Product> = crate::api::product::list(biz_id).await?;
+    let products: Vec<Product> = crate::api::list::<Product>(biz_id, String::from("products")).await?;
     
     let table = Table::new(products).to_string();
 
