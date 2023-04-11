@@ -18,7 +18,7 @@ pub async fn run(_command: Options) -> Result<()> {
         }
     };
     
-    println!("Youre currently authenticated as @{}, with your user id being {}", user.username, user.id);
+    println!("Youre currently authenticated as @{}, with your user id being {},", user.username, user.id);
 
     Ok(())
 }
