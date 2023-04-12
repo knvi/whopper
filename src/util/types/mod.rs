@@ -25,7 +25,7 @@ pub struct Company {
     pub access_token: String
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, Tabled)]
 pub struct Membership {
     /// Membership ID
     pub id: String,

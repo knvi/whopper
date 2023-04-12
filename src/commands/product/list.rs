@@ -19,7 +19,12 @@ pub async fn run(_command: Options) -> Result<()> {
         }
     };
 
-    let products: Vec<Product> = crate::api::list::<Product>(biz_id, String::from("products")).await?;
+    let products: Vec<Product> = crate::api::list::<Product>(Some(biz_id), String::from("products")).await?;
+
+    if products.is_empty() {
+        println!("You don't have any products!");
+        return Ok(());
+    }
     
     let table = Table::new(products).to_string();
 

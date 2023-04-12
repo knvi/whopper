@@ -4,5 +4,9 @@
         ".\\Cargo.toml"
     ],
     "rust-analyzer.showUnlinkedFileNotification": false,
-    "cSpell.enabled": true
+    "cSpell.enabled": true,
+    "cSpell.language": "en,en-GB,en-US",
+    "cSpell.ignoreWords": [
+        "webbrowser"
+    ]
 }
